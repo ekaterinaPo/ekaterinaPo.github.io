@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kate Pogrebnyakova | Data Portfolio</title>
+  <meta name="description" content="Data projects by Ekaterina (Kate) Pogrebnyakova: dashboards, machine learning models and AI agents, with a finance and accounting background.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/site.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="brand-wrap">
+        <a class="brand" href="#top">Kate Pogrebnyakova</a>
+        <span class="tagline">Data Analyst · Data Scientist<span class="sep">|</span>Python, SQL, Power BI, ML<span class="sep">|</span>Finance &amp; Accounting</span>
+      </div>
+      <nav class="nav">
+        <a href="#projects">Projects</a>
+        <a href="#about" class="hide-sm">About</a>
+        <a href="#skills" class="hide-sm">Skills</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" aria-label="Switch dark or light mode">☾</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>Ekaterina (Kate) Pogrebnyakova</h1>
+          <p class="skills-line">Python · SQL · Power BI · Machine Learning · AWS</p>
+          <p class="lead">I turn complex data into clear business decisions through dashboards, ML models and AI agents, drawing on my experience in finance and accounting.</p>
+          <div class="btn-row">
+            <!-- CV button hidden until the CV PDF is added: <a class="btn primary" href="cv/Kate_Pogrebnyakova_CV.pdf" target="_blank" rel="noopener">Download CV</a> -->
+            <a class="btn" href="https://www.linkedin.com/in/pogrebnyakova" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="https://github.com/ekaterinaPo" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="mailto:kate@andmails.com">Email</a>
+          </div>
+        </div>
+        <img class="photo" src="assets/img/Kate.png" alt="Kate Pogrebnyakova" style="object-position: 50% 35%">
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container">
+        <p class="eyebrow">Projects</p>
+        <h2>Recent work</h2>
+        <p class="muted">Each project page explains the problem, what I built and the results, with code links at the bottom.</p>
+
+        <div class="projects" style="margin-top:24px">
+          <a class="card project-card" href="projects/un-sdg-agent.html">
+            <div class="thumb" style="background:#ffffff">
+              <svg class="diagram blue" viewBox="0 0 320 180" role="img" aria-label="Question goes to an AI agent, which writes SQL and returns an answer">
+                <defs><marker id="ah0" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path class="arrowhead" d="M0,0 L8,4 L0,8 z"/></marker></defs>
+                <rect class="box" x="14" y="70" width="80" height="40" rx="8"/><text x="54" y="95" text-anchor="middle">Question</text>
+                <rect class="box accent" x="120" y="70" width="80" height="40" rx="8"/><text x="160" y="95" text-anchor="middle">AI agent</text>
+                <rect class="box" x="226" y="70" width="80" height="40" rx="8"/><text x="266" y="95" text-anchor="middle">Answer</text>
+                <rect class="box" x="120" y="128" width="80" height="34" rx="8"/><text x="160" y="150" text-anchor="middle" class="small">SQL database</text>
+                <path class="line" d="M94,90 H118" marker-end="url(#ah0)"/><path class="line" d="M200,90 H224" marker-end="url(#ah0)"/>
+                <path class="loop" d="M150,110 V126 M170,126 V110"/>
+                <text x="160" y="40" text-anchor="middle" class="small">writes SQL, checks the result, retries</text>
+              </svg>
+            </div>
+            <div class="body">
+              <div class="chips"><span class="chip">AI agents</span><span class="chip">SQL</span><span class="chip neutral">Python</span></div>
+              <h3>UN Sustainable Development Goals (SDG) SQL Agent</h3>
+              <p class="desc">A LangGraph agent that answers plain-English questions about UN development data for 193 countries. It writes its own SQL, checks the result and retries when needed. Profiling its runs cut the cost per question from $0.39 to $0.06-0.13.</p>
+              <span class="more">See the project →</span>
+            </div>
+          </a>
+
+          <a class="card project-card" href="projects/superstore-sales.html">
+            <div class="thumb"><img src="assets/img/superstore/c2b_discount_margin.png" alt="Profit margin by discount level: positive up to 20% off, negative above"></div>
+            <div class="body">
+              <div class="chips"><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip neutral">Python EDA</span></div>
+              <h3>Superstore Sales Performance</h3>
+              <p class="desc">Python EDA and two Power BI dashboards on four years of retail sales. The analysis shows that discounts above 20% cost $135K in profit, and ends with seven recommendations for management.</p>
+              <span class="more">See the project →</span>
+            </div>
+          </a>
+
+          <a class="card project-card" href="projects/landcover.html">
+            <div class="thumb" style="background:#ffffff"><img style="object-fit:contain;object-position:center" src="assets/img/landcover/architecture_overview.png" alt="Land cover project architecture on AWS"></div>
+            <div class="body">
+              <div class="chips"><span class="chip">Computer vision</span><span class="chip">U-Net</span><span class="chip">PyTorch</span><span class="chip">AWS</span><span class="chip neutral">Docker</span><span class="chip neutral">Streamlit</span><span class="chip neutral">FastAPI</span><span class="chip neutral">GitHub Actions</span></div>
+              <h3>Land Cover Segmentation</h3>
+              <p class="desc">A U-Net model that labels every pixel of a satellite image as one of seven land-cover types. It runs on AWS Lambda in Docker containers, deployed through a GitHub Actions CI/CD pipeline, with a Streamlit web app and a FastAPI endpoint.</p>
+              <span class="more">See the project →</span>
+            </div>
+          </a>
+        </div>
+        <div class="btn-row" style="margin-top:28px">
+          <a class="btn primary" href="projects.html">See all projects</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container about">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2>From accounting to data</h2>
+          <p>Before data, I spent over a decade in finance and accounting teams, in organizations from 15 to 300 people, in Belarus and Canada, and under three accounting standards (GAAP, IFRS, IPSAS). Seeing so many businesses from the inside showed me how much good decisions depend on data that people trust and understand. That is the work I do now: bringing an accounting mindset to data, looking beyond the numbers to understand their business context, turning ambiguity into clarity, and using data to inform business decisions.</p>
+        </div>
+        <div class="card">
+          <ul class="facts">
+            <li><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><span><strong>MSc Economics</strong><span class="muted">Belarusian State University</span></span></li>
+            <li><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span><span><strong>Data Science &amp; AI</strong><span class="muted">Certificate, University of Toronto; MLOps Engineering program, Toronto Institute of Data Science and Technology</span></span></li>
+            <li><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span><span><strong>Cloud deployment</strong><span class="muted">AWS Lambda, SageMaker, S3</span></span></li>
+            <li><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span><strong>Finance &amp; accounting</strong><span class="muted">More than 10 years in Belarus and Canada, including UNDP</span></span></li>
+            <li><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span><strong>New York area</strong><span class="muted">English, Russian, Belarusian</span></span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="container">
+        <p class="eyebrow">Skills</p>
+        <h2>Tools I work with</h2>
+        <div class="skills" style="margin-top:20px">
+          <div class="card"><h3>Analysis &amp; BI</h3><div class="chips"><span class="chip neutral">SQL</span><span class="chip neutral">Power BI</span><span class="chip neutral">DAX</span><span class="chip neutral">Power Query</span><span class="chip neutral">Tableau</span><span class="chip neutral">Advanced Excel</span><span class="chip neutral">Star schema</span></div></div>
+          <div class="card"><h3>Python &amp; statistics</h3><div class="chips"><span class="chip neutral">Pandas</span><span class="chip neutral">SciPy</span><span class="chip neutral">statsmodels</span><span class="chip neutral">Hypothesis testing</span><span class="chip neutral">Time series</span><span class="chip neutral">Plotly</span><span class="chip neutral">Matplotlib</span></div></div>
+          <div class="card"><h3>Machine learning &amp; AI</h3><div class="chips"><span class="chip neutral">Scikit-Learn</span><span class="chip neutral">XGBoost</span><span class="chip neutral">PyTorch</span><span class="chip neutral">TensorFlow</span><span class="chip neutral">LangGraph</span><span class="chip neutral">Claude API</span></div></div>
+          <div class="card"><h3>Cloud &amp; deployment</h3><div class="chips"><span class="chip neutral">AWS Lambda</span><span class="chip neutral">S3</span><span class="chip neutral">SageMaker</span><span class="chip neutral">ECR</span><span class="chip neutral">Docker</span><span class="chip neutral">GitHub Actions</span><span class="chip neutral">FastAPI</span><span class="chip neutral">Streamlit</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="card" style="padding:28px">
+          <p class="eyebrow">Contact</p>
+          <h2>Let's talk</h2>
+          <p class="muted">I'm looking for data roles in the New York area. The fastest way to reach me is email or LinkedIn.</p>
+          <div class="btn-row">
+            <a class="btn primary" href="mailto:kate@andmails.com">kate@andmails.com</a>
+            <a class="btn" href="https://www.linkedin.com/in/pogrebnyakova" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="https://github.com/ekaterinaPo" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><span>© <span id="year">2026</span> Kate Pogrebnyakova</span><a href="#top">Back to top ↑</a></div>
+  </footer>
+</body>
+</html>

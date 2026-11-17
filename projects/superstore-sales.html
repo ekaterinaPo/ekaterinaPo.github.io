@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Superstore Sales | Kate Pogrebnyakova</title>
+  <meta name="description" content="Python EDA and two Power BI dashboards: why profit did not grow with sales, and what to change.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/site.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="brand-wrap">
+        <a class="brand" href="../index.html">Kate Pogrebnyakova</a>
+        <span class="tagline">Data Analyst · Data Scientist<span class="sep">|</span>Python, SQL, Power BI, ML<span class="sep">|</span>Finance &amp; Accounting</span>
+      </div>
+      <nav class="nav">
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#contact">Contact</a>
+        <button class="theme-toggle" aria-label="Switch dark or light mode">☾</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="case container">
+    <a class="btn back prev-page" href="../index.html#projects">← Previous page</a>
+
+    <div class="case-hero">
+      <div class="chips" style="margin-bottom:12px"><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Power Query</span><span class="chip neutral">Python EDA</span></div>
+      <h1>Superstore Sales Performance</h1>
+      <p class="question">Sales grew 51% in four years. Why did profit not grow faster, and what should management change?</p>
+      <div class="btn-row" style="margin:4px 0 8px">
+        <a class="btn primary" href="../assets/docs/Superstore_Dashboard.pdf" target="_blank" rel="noopener">Open analytical dashboard (6 pages, PDF) ↗</a>
+        <a class="btn" href="../assets/docs/Superstore_Dashboard_management.pdf" target="_blank" rel="noopener">Open management dashboard (1 page, PDF) ↗</a>
+      </div>
+
+      <div class="kpis kpis-5">
+        <div class="card kpi"><div class="num pbi-pos">$2.3M</div><div class="label">sales</div></div>
+        <div class="card kpi"><div class="num pbi-pos">$286K</div><div class="label">profit</div></div>
+        <div class="card kpi"><div class="num pbi-pos">12.5%</div><div class="label">profit margin</div></div>
+        <div class="card kpi"><div class="num pbi-pos">5,009</div><div class="label">orders</div></div>
+        <div class="card kpi"><div class="num pbi-neg">-$135K</div><div class="label">lost at &gt;20% off</div></div>
+      </div>
+      <p class="muted" style="font-size:.93rem;margin-top:-2px">All figures for 2014-2017.</p>
+      <div class="split">
+        <figure class="card figure">
+          <img src="../assets/img/superstore/c2b_discount_margin.png" alt="Profit margin by discount level: positive up to 20% off, negative above">
+        </figure>
+        <div class="split-text">
+          <p>The short answer is deep discounts. Orders sold at more than 20% off lost $135K, and 97% of them lost money. If those orders had just broken even, profit would have been $422K instead of $286K.</p>
+          <p class="muted"><strong style="color:var(--text)">Margin turns negative above 20% off:</strong> 29.5% with no discount, -10% at 21-30%, -77% above 40%.</p>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <h2>What the data shows</h2>
+      <p class="muted">Visuals from the Power BI dashboard. Click any chart to enlarge it.</p>
+
+      <div class="story-step split">
+        <figure class="card figure">
+          <img src="../assets/img/superstore/v1_sales_profit_quarter.jpg" alt="Sales and profit by quarter, 2014-2017" loading="lazy">
+        </figure>
+        <div class="split-text">
+          <h3>1. Sales grew, profit did not keep up</h3>
+          <p class="muted">Sales rose every year and peaked at $280K in Q4 2017, while quarterly profit stayed between $4K and $38K.</p>
+        </div>
+      </div>
+
+      <div class="story-step">
+        <h3>2. The cause: deep discounts</h3>
+        <div class="grid-2">
+        <figure class="card figure">
+          <img src="../assets/img/superstore/v2_share_of_sales.jpg" alt="Share of sales by discount level" loading="lazy">
+          <figcaption><strong>Small share, big loss.</strong> Each discount band above 20% is only about 5% of sales, but together they lose $135K.</figcaption>
+        </figure>
+        <figure class="card figure">
+          <img src="../assets/img/superstore/v3_margin_with_without.jpg" alt="Profit margin with and without orders discounted over 20%" loading="lazy">
+          <figcaption><strong>The margin without deep discounts</strong> (dark line) would be 20-23% a year instead of 10-13%.</figcaption>
+        </figure>
+        </div>
+      </div>
+
+      <div class="story-step">
+        <h3>3. Which products</h3>
+        <div class="grid-2">
+        <figure class="card figure">
+          <img src="../assets/img/superstore/v4_subcategory_discounts.jpg" alt="How each sub-category is discounted" loading="lazy">
+          <figcaption><strong>Most discounted:</strong> tables (44% of sales above 20% off), machines (41%), bookcases (25%) and chairs (21%).</figcaption>
+        </figure>
+        <figure class="card figure">
+          <img src="../assets/img/superstore/v5_subcategory_scatter.jpg" alt="Sub-categories by total profit and profit margin" loading="lazy">
+          <figcaption><strong>Right = more profit, up = higher margin.</strong> Tables, bookcases and supplies lose money; copiers, phones and accessories lead.</figcaption>
+        </figure>
+        </div>
+      </div>
+
+      <div class="story-step">
+        <h3>4. Where</h3>
+        <div class="grid-2">
+        <figure class="card figure">
+          <img src="../assets/img/superstore/v6_profit_map.jpg" alt="Total profit by US state" loading="lazy">
+          <figcaption><strong>Total profit by state. Red = loss, darker blue = more profit.</strong> Texas, Ohio, Pennsylvania and Illinois lose the most; California and New York earn the most.</figcaption>
+        </figure>
+        <figure class="card figure">
+          <img src="../assets/img/superstore/v7_state_discounts.jpg" alt="States with the highest average discount" loading="lazy">
+          <figcaption><strong>All 10 loss-making states</strong> average 28-39% discounts; profitable states stay at 20% or less.</figcaption>
+        </figure>
+        </div>
+      </div>
+
+      <div class="story-step">
+        <h3>5. A second problem: no new customers</h3>
+        <div class="grid-2">
+        <figure class="card figure">
+          <img src="../assets/img/superstore/v8_active_customers.jpg" alt="Active customers per year by first order year" loading="lazy">
+          <figcaption><strong>Most customers stay:</strong> 517 of 2017's buyers first ordered in 2014.</figcaption>
+        </figure>
+        <figure class="card figure">
+          <img src="../assets/img/superstore/v9_new_customers.jpg" alt="New customers per year" loading="lazy">
+          <figcaption><strong>New customers dried up:</strong> 595 in 2014, only 11 in 2017.</figcaption>
+        </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div>
+        <h2>Other findings</h2>
+        <ul class="findings">
+          <li><strong>Furniture sells well but earns little:</strong> 32% of sales, 6% of profit. Tables and bookcases lose money.</li>
+          <li><strong>Five products lost $22K:</strong> 3D printers, a laser printer and conference tables sold at 28-53% off.</li>
+          <li><strong>A small group of customers brings most of the profit:</strong> the top 20% bring 82%, while 155 customers cost more than they bring in.</li>
+          <li><strong>Customers stay, new ones stopped coming:</strong> 87.5% retention in 2017, but only 11 new customers that year (595 in 2014).</li>
+          <li><strong>Sales follow the calendar:</strong> September, November and December bring 43% of yearly sales; January and February only 7%.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Recommendations</h2>
+        <ol class="findings">
+          <li>Cap discounts at 20%; higher needs a manager's approval. Up to $135K of profit is at stake.</li>
+          <li>Test the cap in Texas first and compare with Virginia (no discounts, 26% margin).</li>
+          <li>Review costs on tables and bookcases; drop items that lose money at any price.</li>
+          <li>Set a minimum price for expensive machines such as 3D and laser printers.</li>
+          <li>Give the top ~160 customers a personal contact; review deals with the 155 loss-making ones.</li>
+          <li>Run acquisition campaigns in January and February with cheap, high-margin items.</li>
+          <li>Plan stock and staff for the autumn peak, and don't discount when people already buy.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <h2>What I did</h2>
+      <ol class="steps">
+        <li><strong>Python EDA.</strong> Data quality checks, profitability by category and region, discount impact, shipping speed, customer cohorts. The EDA found the patterns; the dashboard shows them to the business.</li>
+        <li><strong>Data model.</strong> A star schema in Power BI: one fact table (one row per order line) and five dimensions (date, customer, product, geography, discount band), shaped in Power Query.</li>
+        <li><strong>125+ DAX measures.</strong> Year-over-year and YTD, "profit if deep discounts broke even", customer retention and cohorts, Pareto profit share, and titles that update with the filters.</li>
+        <li><strong>Two audiences, two dashboards.</strong> A one-page view for executives and a six-page drill-down for pricing and sales teams.</li>
+      </ol>
+    </section>
+
+    <section>
+      <div class="note">
+        <strong>Go deeper:</strong>
+        <a href="https://github.com/ekaterinaPo/superstore-sales-dashboard" target="_blank" rel="noopener">GitHub repository</a> (EDA notebook, DAX notes) ·
+        Data: <a href="https://www.kaggle.com/datasets/vivek468/superstore-dataset-final" target="_blank" rel="noopener">Sample Superstore</a>, 9,994 order lines, 2014-2017
+      </div>
+    </section>
+    <div style="margin:8px 0 48px"><a class="btn back" href="../index.html#projects">← Back to all projects</a></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><span>© <span id="year">2026</span> Kate Pogrebnyakova</span><a href="../index.html">Home</a></div>
+  </footer>
+</body>
+</html>

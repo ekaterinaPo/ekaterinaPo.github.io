@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>All Projects | Kate Pogrebnyakova</title>
+  <meta name="description" content="All data projects by Kate Pogrebnyakova: dashboards, machine learning models, statistics and AI agents.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/site.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="brand-wrap">
+        <a class="brand" href="index.html">Kate Pogrebnyakova</a>
+        <span class="tagline">Data Analyst · Data Scientist<span class="sep">|</span>Python, SQL, Power BI, ML<span class="sep">|</span>Finance &amp; Accounting</span>
+      </div>
+      <nav class="nav">
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#about" class="hide-sm">About</a>
+        <a href="index.html#contact">Contact</a>
+        <button class="theme-toggle" aria-label="Switch dark or light mode">☾</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="top">
+    <section>
+      <a class="btn back prev-page" href="index.html">← Previous page</a>
+      <p class="eyebrow" style="margin-top:28px">Projects</p>
+      <h1>All projects</h1>
+      <p class="lead muted" style="max-width:680px">Dashboards, machine learning models, statistics and AI agents. Each project starts with a business question and ends with a result.</p>
+
+      <div class="tabs" role="group" aria-label="Filter projects" style="margin-top:28px">
+        <button class="tab active" data-filter="all">All work <span class="muted">(5)</span></button>
+        <button class="tab" data-filter="bi">Dashboards &amp; BI <span class="muted">(1)</span></button>
+        <button class="tab" data-filter="ml">Machine learning <span class="muted">(2)</span></button>
+        <button class="tab" data-filter="agents">AI agents <span class="muted">(1)</span></button>
+        <button class="tab" data-filter="stats">Statistics &amp; EDA <span class="muted">(2)</span></button>
+      </div>
+
+      <div class="proj-list">
+        <article class="proj-row" data-cat="agents">
+          <div class="proj-num">01</div>
+          <div class="proj-body">
+            <p class="proj-cat">AI agents</p>
+            <h3><a href="projects/un-sdg-agent.html">UN Sustainable Development Goals (SDG) SQL Agent</a></h3>
+            <div class="chips"><span class="chip">LangGraph</span><span class="chip">SQL</span><span class="chip neutral">Python</span></div>
+            <p class="desc">A LangGraph agent that answers plain-English questions about UN development data for 193 countries. It writes its own SQL, checks the result and retries when needed. Profiling its runs cut the cost per question from $0.39 to $0.06-0.13.</p>
+            <a class="more" href="projects/un-sdg-agent.html">See the project →</a>
+          </div>
+        </article>
+
+        <article class="proj-row" data-cat="bi stats">
+          <div class="proj-num">02</div>
+          <div class="proj-body">
+            <p class="proj-cat">Dashboards &amp; BI</p>
+            <h3><a href="projects/superstore-sales.html">Superstore Sales Performance</a></h3>
+            <div class="chips"><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip neutral">Python EDA</span></div>
+            <p class="desc">Python EDA and two Power BI dashboards on four years of retail sales. The analysis shows that discounts above 20% cost $135K in profit, and ends with seven recommendations for management.</p>
+            <a class="more" href="projects/superstore-sales.html">See the project →</a>
+          </div>
+        </article>
+
+        <article class="proj-row" data-cat="ml">
+          <div class="proj-num">03</div>
+          <div class="proj-body">
+            <p class="proj-cat">Machine learning</p>
+            <h3><a href="projects/landcover.html">Land Cover Segmentation</a></h3>
+            <div class="chips"><span class="chip">U-Net</span><span class="chip">PyTorch</span><span class="chip">AWS</span><span class="chip neutral">Docker</span><span class="chip neutral">GitHub Actions</span><span class="chip neutral">FastAPI</span><span class="chip neutral">Streamlit</span></div>
+            <p class="desc">A U-Net model that labels every pixel of a satellite image as one of seven land-cover types. It runs on AWS Lambda in Docker containers, deployed through a GitHub Actions CI/CD pipeline, with a Streamlit web app and a FastAPI endpoint.</p>
+            <a class="more" href="projects/landcover.html">See the project →</a>
+          </div>
+        </article>
+
+        <article class="proj-row" data-cat="ml">
+          <div class="proj-num">04</div>
+          <div class="proj-body">
+            <p class="proj-cat">Machine learning</p>
+            <h3><a href="https://github.com/ekaterinaPo/credit-card-fraud-detection" target="_blank" rel="noopener">Credit Card Fraud Detection</a></h3>
+            <div class="chips"><span class="chip">XGBoost</span><span class="chip">Random Forest</span><span class="chip neutral">Scikit-Learn</span><span class="chip neutral">SMOTE</span><span class="chip neutral">Python</span></div>
+            <p class="desc">Three classifiers compared on 284,807 card transactions, where only 0.17% are fraud. The best model, XGBoost, reaches a PR-AUC of 0.88. The decision threshold is set by business cost, not by the default 0.5.</p>
+            <a class="more" href="https://github.com/ekaterinaPo/credit-card-fraud-detection" target="_blank" rel="noopener">View on GitHub →</a>
+          </div>
+        </article>
+
+        <article class="proj-row" data-cat="stats">
+          <div class="proj-num">05</div>
+          <div class="proj-body">
+            <p class="proj-cat">Statistics &amp; EDA</p>
+            <h3>120 Years of Olympic History</h3>
+            <div class="chips"><span class="chip">Hypothesis testing</span><span class="chip">OLS regression</span><span class="chip neutral">Python EDA</span><span class="chip progress">Write-up in progress</span></div>
+            <p class="desc">EDA and hypothesis testing on 120 years of Olympic data (222,552 records). After controlling for team size, hosting the Games is worth about 23 extra medals (OLS regression, R² = 0.717).</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><span>© <span id="year">2026</span> Kate Pogrebnyakova</span><a href="#top">Back to top ↑</a></div>
+  </footer>
+
+  <script>
+    (function () {
+      var tabs = document.querySelectorAll('.tab[data-filter]');
+      var rows = document.querySelectorAll('.proj-row');
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var f = tab.getAttribute('data-filter');
+          tabs.forEach(function (t) { t.classList.toggle('active', t === tab); });
+          rows.forEach(function (r) {
+            var cats = (r.getAttribute('data-cat') || '').split(' ');
+            r.hidden = !(f === 'all' || cats.indexOf(f) !== -1);
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

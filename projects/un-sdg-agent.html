@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UN Sustainable Development Goals SQL Agent | Kate Pogrebnyakova</title>
+  <meta name="description" content="An AI agent that answers plain-English questions about UN Sustainable Development Goals data by writing and checking its own SQL.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/site.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="brand-wrap">
+        <a class="brand" href="../index.html">Kate Pogrebnyakova</a>
+        <span class="tagline">Data Analyst · Data Scientist<span class="sep">|</span>Python, SQL, Power BI, ML<span class="sep">|</span>Finance &amp; Accounting</span>
+      </div>
+      <nav class="nav">
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#contact">Contact</a>
+        <button class="theme-toggle" aria-label="Switch dark or light mode">☾</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="case container">
+    <a class="btn back prev-page" href="../index.html#projects">← Previous page</a>
+
+    <div class="case-hero">
+      <div class="chips" style="margin-bottom:12px"><span class="chip">AI agents</span><span class="chip">SQL</span><span class="chip">LangGraph</span><span class="chip neutral">Claude API</span><span class="chip neutral">SQLite</span><span class="chip progress">Power BI dashboard in progress</span></div>
+      <h1>UN Sustainable Development Goals (SDG) SQL Agent</h1>
+      <p class="question">Can a policy analyst ask a question in plain English, like "Which Sub-Saharan African countries improved most in health since 2015?", and get a correct, checked answer from a large database without writing SQL?</p>
+      <p>The Sustainable Development Goals (SDGs) are 17 goals adopted by all UN member states in 2015, covering poverty, health, education, inequality, climate and more. Each goal is tracked with indicators for every country.</p>
+      <div class="kpis">
+        <div class="card kpi"><div class="num">293K</div><div class="label">data points: 193 countries, 123 indicators, 2000-2025</div></div>
+        <div class="card kpi"><div class="num">$0.39 → $0.06</div><div class="label">cost per question after profiling (now $0.06-0.13, up to 85% lower)</div></div>
+        <div class="card kpi"><div class="num">100%</div><div class="label">of questions logged with SQL, answer and token cost</div></div>
+      </div>
+      <p>I worked inside the UN system at UNDP before moving into data, so this project is personal: it makes UN development data easier to question.</p>
+    </div>
+
+    <section>
+      <h2>How it works</h2>
+      <p class="muted">The agent works like an analyst: it looks at the database, writes a query, checks the result and tries again if something is wrong.</p>
+      <div class="card figure">
+        <svg class="diagram blue" viewBox="0 0 900 300" role="img" aria-label="Question goes to a local entity resolver, then to the AI agent, which queries the SQLite database in a loop, then returns an answer that is saved to an audit log">
+          <defs>
+            <marker id="ah" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path class="arrowhead" d="M0,0 L9,4.5 L0,9 z"/></marker>
+            <marker id="ahA" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path class="arrowhead accent" d="M0,0 L9,4.5 L0,9 z"/></marker>
+          </defs>
+          <!-- Row 1 -->
+          <rect class="box" x="10" y="90" width="140" height="64" rx="10"/>
+          <text x="80" y="118" text-anchor="middle">1. Question</text>
+          <text x="80" y="138" text-anchor="middle" class="small">plain English</text>
+
+          <rect class="box free" x="190" y="90" width="170" height="64" rx="10"/>
+          <text x="275" y="118" text-anchor="middle">2. Entity resolver</text>
+          <text x="275" y="138" text-anchor="middle" class="small">local, no AI cost</text>
+
+          <rect class="box accent" x="400" y="90" width="190" height="64" rx="10"/>
+          <text x="495" y="118" text-anchor="middle">3. AI agent</text>
+          <text x="495" y="138" text-anchor="middle" class="small">LangGraph + Claude</text>
+
+          <rect class="box" x="640" y="90" width="120" height="64" rx="10"/>
+          <text x="700" y="118" text-anchor="middle">5. Answer</text>
+          <text x="700" y="138" text-anchor="middle" class="small">table + method</text>
+
+          <path class="line" d="M150,122 H186" marker-end="url(#ah)"/>
+          <path class="line" d="M360,122 H396" marker-end="url(#ah)"/>
+          <path class="line" d="M590,122 H636" marker-end="url(#ah)"/>
+
+          <!-- Cached schema -->
+          <rect class="box" x="410" y="10" width="170" height="44" rx="10"/>
+          <text x="495" y="37" text-anchor="middle" class="small">Schema cached in prompt</text>
+          <path class="line" d="M495,54 V86" marker-end="url(#ah)"/>
+
+          <!-- SQL loop -->
+          <rect class="box" x="410" y="220" width="170" height="64" rx="10"/>
+          <text x="495" y="248" text-anchor="middle">4. SQLite database</text>
+          <text x="495" y="268" text-anchor="middle" class="small">5 tables, 293K rows</text>
+          <path class="loop" d="M470,154 V216" marker-end="url(#ahA)"/>
+          <path class="loop" d="M520,220 V158" marker-end="url(#ahA)"/>
+          <text x="340" y="192" class="small">writes SQL</text>
+          <text x="532" y="192" class="small">checks result, retries</text>
+
+          <!-- Audit log -->
+          <rect class="box" x="790" y="90" width="100" height="64" rx="10"/>
+          <text x="840" y="118" text-anchor="middle">Audit log</text>
+          <text x="840" y="138" text-anchor="middle" class="small">SQL + cost</text>
+          <path class="line" d="M760,122 H786" marker-end="url(#ah)"/>
+        </svg>
+        <figcaption><strong>Why an agent, not one-shot text-to-SQL?</strong> A single query often fails on a complex schema or needs several steps. The agent inspects, queries, checks and retries until the answer is supported by the data.</figcaption>
+      </div>
+    </section>
+
+    <section>
+      <h2>A real example from the logs</h2>
+      <div class="card chat">
+        <div class="bubble q">Which Sub-Saharan African countries improved most in SDG 3 (health) since 2015?</div>
+        <div class="bubble a">
+          The database has individual indicators, not a ready health score, so I built one: all 17 SDG 3 indicators (maternal and child mortality, TB, HIV, life expectancy, health coverage and others), each scaled 0-100, then averaged.
+          <table>
+            <tr><th>Country</th><th>2015</th><th>2025</th><th>Change</th></tr>
+            <tr><td>South Sudan</td><td>49.8</td><td>60.0</td><td>+10.2</td></tr>
+            <tr><td>Central African Republic</td><td>50.5</td><td>60.1</td><td>+9.6</td></tr>
+            <tr><td>Guinea-Bissau</td><td>63.6</td><td>69.1</td><td>+5.5</td></tr>
+          </table>
+        </div>
+        <p class="muted" style="margin:0;font-size:.88rem">Shortened from the agent's answer. This run used 5 AI calls and about 29K tokens; the full SQL is in the log.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>The database</h2>
+      <p class="muted">I built the database from the Sustainable Development Report and World Bank files. Five tables, linked by country and indicator codes.</p>
+      <div class="schema">
+        <div class="card table-card"><span class="tname">countries</span><span class="rows">193 rows</span>
+          <ul><li><b>country_code</b> PK</li><li>country_name</li><li>region, income_group</li><li>population, gdp_per_capita</li></ul></div>
+        <div class="card table-card"><span class="tname">sdg_goals</span><span class="rows">17 rows</span>
+          <ul><li><b>goal_id</b> PK</li><li>goal_name</li><li>goal_short</li></ul></div>
+        <div class="card table-card"><span class="tname">sdg_indicators</span><span class="rows">123 rows</span>
+          <ul><li><b>indicator_code</b> PK</li><li>goal_id → sdg_goals</li><li>indicator_name, unit</li><li>target_value, target_direction</li></ul></div>
+        <div class="card table-card"><span class="tname">sdg_values</span><span class="rows">293,248 rows</span>
+          <ul><li>country_code → countries</li><li>indicator_code → sdg_indicators</li><li>year, value, source</li></ul></div>
+        <div class="card table-card"><span class="tname">sdg_index_scores</span><span class="rows">5,187 rows</span>
+          <ul><li>country_code → countries</li><li>year</li><li>sdg_index_score, sdg_rank</li></ul></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What I did</h2>
+      <ol class="steps">
+        <li><strong>Built the database.</strong> Cleaned and joined the SDG indicator panel, the codebook and World Bank income and GDP data into a 5-table SQLite database.</li>
+        <li><strong>Built the agent with LangGraph.</strong> The older LangChain SQL agent did not work with current Claude models, so I moved to LangGraph's native tool calling.</li>
+        <li><strong>Profiled cost and cut it.</strong> The first version cost $0.39 per question. The logs showed that the number of agent turns, not the size of the schema, drove cost. A local entity resolver and a cached schema removed the wasted turns: $0.06-0.13 per question.</li>
+        <li><strong>Logged everything.</strong> Every question, every SQL attempt, the result, the answer and the exact token cost go to an audit log, so the numbers above are measured, not estimated.</li>
+      </ol>
+    </section>
+
+    <section>
+      <div class="note">
+        <strong>In progress:</strong> a Power BI dashboard on the same SDG data (country map, goal scores, trends). It will be added to this page when it's finished.
+      </div>
+    </section>
+
+    <section>
+      <div class="note">
+        <strong>Go deeper:</strong>
+        <a href="https://github.com/ekaterinaPo/un-sdg-analytics-platform" target="_blank" rel="noopener">GitHub repository</a> (agent code, database build notebook, audit log)
+      </div>
+    </section>
+    <div style="margin:8px 0 48px"><a class="btn back" href="../index.html#projects">← Back to all projects</a></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><span>© <span id="year">2026</span> Kate Pogrebnyakova</span><a href="../index.html">Home</a></div>
+  </footer>
+</body>
+</html>

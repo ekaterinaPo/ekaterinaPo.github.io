@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Land Cover Segmentation | Kate Pogrebnyakova</title>
+  <meta name="description" content="A U-Net model that labels every pixel of a satellite image, deployed to AWS Lambda through a GitHub Actions CI/CD pipeline, with a web app and an API.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/site.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="brand-wrap">
+        <a class="brand" href="../index.html">Kate Pogrebnyakova</a>
+        <span class="tagline">Data Analyst · Data Scientist<span class="sep">|</span>Python, SQL, Power BI, ML<span class="sep">|</span>Finance &amp; Accounting</span>
+      </div>
+      <nav class="nav">
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#contact">Contact</a>
+        <button class="theme-toggle" aria-label="Switch dark or light mode">☾</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="case container">
+    <a class="btn back prev-page" href="../index.html#projects">← Previous page</a>
+
+    <div class="case-hero">
+      <div class="chips" style="margin-bottom:12px"><span class="chip">Computer vision</span><span class="chip">U-Net</span><span class="chip">PyTorch</span><span class="chip">AWS Lambda</span><span class="chip neutral">S3</span><span class="chip neutral">Amazon ECR</span><span class="chip neutral">GitHub Actions</span><span class="chip neutral">Docker</span><span class="chip neutral">Streamlit</span><span class="chip neutral">FastAPI</span></div>
+      <h1>Land Cover Segmentation</h1>
+      <p class="question">Can a model label every pixel of a satellite image as forest, water, farmland or city, and can it run in production with automated deployment, not just in a notebook?</p>
+      <p>This project covers the full path from model to production: a U-Net for 7-class segmentation, Docker images in Amazon ECR, three AWS Lambda serving paths, and a GitHub Actions CI/CD pipeline that deploys every code change.</p>
+    </div>
+
+    <section>
+      <h2>Architecture</h2>
+      <p class="muted">The model is trained once and its weights are stored in S3. Code changes go through GitHub Actions to Amazon ECR and on to three Lambda functions, which load the model to answer requests from three kinds of users.</p>
+      <figure class="card figure">
+        <img src="../assets/img/landcover/architecture_overview.png" alt="End-to-end architecture: DeepGlobe dataset, U-Net training, weights in S3, Docker images in ECR, and three AWS Lambda functions serving an automated system, a Streamlit user and an API client">
+        <figcaption><strong>One model, three serving paths.</strong> Click to enlarge.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>Who can use it, and how</h2>
+      <div class="schema">
+        <div class="card table-card" style="font-size:.95rem">
+          <h3>Web app (main demo)</h3>
+          <p class="muted" style="margin:0">A user uploads a satellite image in a Streamlit app. API Gateway sends it to Lambda, and the app shows the original and the colored land-cover map side by side, with a download button.</p>
+        </div>
+        <div class="card table-card" style="font-size:.95rem">
+          <h3>Developer API</h3>
+          <p class="muted" style="margin:0">A FastAPI app on Lambda, reached through a Lambda Function URL. Other systems send an image and get the prediction back as data.</p>
+        </div>
+        <div class="card table-card" style="font-size:.95rem">
+          <h3>Automated batch</h3>
+          <p class="muted" style="margin:0">Dropping an image into an S3 bucket triggers Lambda, which writes the predicted map back to S3. No user interaction needed.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What I did</h2>
+      <ol class="steps">
+        <li><strong>Trained a U-Net in PyTorch</strong> on the DeepGlobe Land Cover dataset (satellite images labeled pixel by pixel, resized to 512×512). U-Net keeps fine spatial detail through its skip connections, which matters when every pixel needs a label.</li>
+        <li><strong>Stored the model in S3.</strong> The training script uploads the weights directly, so every Lambda loads the same model.</li>
+        <li><strong>Packaged inference in Docker</strong> images stored in Amazon ECR (Elastic Container Registry), which is how Lambda runs a PyTorch model that is too large for a standard package.</li>
+        <li><strong>Built CI/CD with GitHub Actions.</strong> One workflow per Lambda: on every push to GitHub it builds the Docker image, pushes it to Amazon ECR and updates the Lambda function to the new image, so a code change reaches production without manual steps.</li>
+        <li><strong>Deployed three Lambda functions</strong> with different triggers (S3 event, API Gateway, Function URL) for three kinds of users, and built the Streamlit app as the user-facing demo.</li>
+      </ol>
+    </section>
+
+
+    <section>
+      <div class="note">
+        <strong>Go deeper:</strong>
+        <a href="https://github.com/ekaterinaPo/LandCover" target="_blank" rel="noopener">GitHub repository</a> (model, Lambda handlers, Dockerfiles, Streamlit app) ·
+        Data: DeepGlobe Land Cover Classification
+      </div>
+    </section>
+    <div style="margin:8px 0 48px"><a class="btn back" href="../index.html#projects">← Back to all projects</a></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><span>© <span id="year">2026</span> Kate Pogrebnyakova</span><a href="../index.html">Home</a></div>
+  </footer>
+</body>
+</html>
